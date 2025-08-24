@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  <div class="w-full min-h-screen bg-zinc-900 text-white flex flex-col items-center py-10 gap-6">
+    
+    
+    <a class="bg-red-500 rounded-md px-3 py-2 self-end mr-10" href="/logout">Logout</a>
+    
+  
+    <h1 class="text-3xl font-bold">HELLO, <%= user.name %></h1>
+    <h5 class="text-lg mb-5">You can create a new Post</h5>
+
+    <form action="/profile" method="POST" class="w-full max-w-xl flex flex-col gap-4">
+      <textarea name="content" rows="4" placeholder="What's in your mind?"
+        class="p-3 outline-none w-full resize-none bg-transparent border-2 border-zinc-800 rounded-md"></textarea>
+      <input type="submit" value="Create new Post"
+        class="px-3 w-40 text-sm rounded-md py-2 bg-blue-500 cursor-pointer hover:bg-blue-600">
+    </form>
+
+    <div class="posts mt-12 w-full max-w-xl">
+      <h3 class="text-zinc-400 mb-4">Your Posts</h3>
+      <div class="postcontainer space-y-4">
+        <% user.posts.reverse().forEach(function(post){ %>
+          <div class="post p-4 bg-zinc-800 border border-zinc-700 rounded-lg shadow">
+            <h4 class="text-blue-500 mb-2 font-semibold">@<%= user.username %></h4>
+            <p class="text-sm tracking-tight text-zinc-200"><%= post.content %></p>
+            <small class="mt-2 inline-block"><%= post.likes.length %> likes</small>
+            <div class="btns flex gap-6 mt-3 text-sm">
+              <a class="text-blue-400 hover:underline" href="/like/<%= post._id %>">
+              <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike" %>
+              </a>
+              <a class="text-zinc-400 hover:underline" href="/edit/<%=post._id%>">Edit</a>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

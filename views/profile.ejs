@@ -12,7 +12,9 @@
     
     <a class="bg-red-500 rounded-md px-3 py-2 self-end mr-10" href="/logout">Logout</a>
     
-  
+  <div class="w-20 h-20  rounded-md overflow-hidden">
+    <img class='w-full h-full object-cover'src="/images/uploads/<%= user.profilepic %>"alt='profile pic'></div>
+    <a class="text-blue-500"href="/profile/upload">Change Profile Photo</a>
     <h1 class="text-3xl font-bold">HELLO, <%= user.name %></h1>
     <h5 class="text-lg mb-5">You can create a new Post</h5>
 

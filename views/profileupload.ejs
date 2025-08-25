@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile Picture</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 text-white p-10">
+        <h3 class="text-3xl mb-5">Upload Profile Picture</h3>
+
+        <!-- Corrected form -->
+        <form autocomplete="off" action="/upload" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 max-w-md">
+            <input type="file" name="image" class="block text-sm text-gray-300 file:mr-4 file:py-2 file:px-4
+                   file:rounded-md file:border-0 file:text-sm file:font-semibold
+                   file:bg-blue-500 file:text-white hover:file:bg-blue-600">
+
+            <input type="submit" value="Upload File"
+                class="px-5 py-2 rounded-md bg-blue-500 hover:bg-blue-600 cursor-pointer">
+        </form>
+    </div>
+</body>
+</html>
